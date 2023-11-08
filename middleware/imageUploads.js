@@ -7,7 +7,7 @@ const imageStorage = multer.diskStorage({
   destination: function (req, file, cb) {
 
     
-    let uploadsFolder = path.join(__dirname, `../uploads`);
+    let uploadsFolder = path.join(__dirname, "../uploads");
     if (!fs.existsSync(uploadsFolder)) {
       fs.mkdirSync(uploadsFolder);
     }
@@ -25,9 +25,7 @@ const imageStorage = multer.diskStorage({
         fs.mkdirSync(folder);
       }
     }
-  
-
-    cb(null, `uploads/${folder}`);
+    cb(null, `../uploads/${folder}`);
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname));
